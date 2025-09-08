@@ -53,16 +53,16 @@ const Headline = styled.p`
 
 const HeadLogo = styled.img`
   width: 55px;
-  height: 25px;
+  /* height: 25px; */
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     width: 75px;
-    height: 35px;
+    /* height: 35px; */
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     width: 115px;
-    height: 49px;
+    /* height: 49px; */
   }
 `;
 
