@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Container } from "components/baseStyles/CommonStyle.styled";
-import { theme } from "components/baseStyles/Variables.styled";
+import styled from 'styled-components';
+import { Container } from 'components/baseStyles/CommonStyle.styled';
+import { theme } from 'components/baseStyles/Variables.styled';
 
 const ActiveListItemsSection = styled.section`
   display: flex;
@@ -159,7 +159,8 @@ const ItemStatistic = styled.div`
   }
 `;
 const BtnWrap = styled.div`
-width: 100%`;
+  width: 100%;
+`;
 const ItemBtn = styled.button`
   display: flex;
   justify-content: center;
@@ -181,6 +182,7 @@ const ItemBtn = styled.button`
     font-size: 24px;
   }
 `;
+
 const ItemCircle = styled.div`
   position: relative;
   display: flex;
@@ -188,85 +190,46 @@ const ItemCircle = styled.div`
   height: 41px;
   border-radius: 50%;
   border: 1px solid ${theme.colors.black};
-  background-color: ${(props) => props.$props};
+  background-color: ${props => props.$props};
 
-  &:nth-child(n)::after {
+  &::after {
+    content: '${props => props.$label}';
     position: absolute;
     display: block;
-    top: -45px;
-    left: -100%;
+    white-space: normal; /* перенос по пробелам */
+    overflow-wrap: normal; /* не резать слова */
+    word-break: keep-all; /* сохранять слова целыми */
+    hyphens: none; /* не добавлять дефисы */
     width: 70px;
     font-size: 12px;
     text-align: center;
-    word-break: break-word;
     color: ${theme.colors.black};
+
+    /* сверху/снизу */
+    left: 100%;
+
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
       font-size: 14px;
       min-width: 100px;
-    }
-  }
-  &:nth-child(1)::after {
-    content: "Данные по пациенту";
-    left: -250%;
-    top: 0;
-    @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      left: -80%;
-      top: -50px;
-    }
-  }
-  &:nth-child(3)::after {
-    content: "Начато лечение";
-    left: 150%;
-    top: 0;
-    @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      left: -80%;
-      top: 45px;
-    }
-  }
-  &:nth-child(5)::after {
-    content: "Физиологические показатели";
-    font-size: 12px;
-    min-width: 120px;
-    left: -335%;
-    top: 0;
-    @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      left: -100%;
-      top: -50px;
-      font-size: 13px;
-      min-width: 120px;
-    }
-  }
-  &:nth-child(7)::after {
-    content: "Сбор анамнеза 1/2";
-    left: 150%;
-    top: 0;
-    @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      left: -80%;
-      top: 45px;
-    }
-  }
-  &:nth-child(9)::after {
-    content: "Сбор анамнеза 2/2";
-    left: -250%;
-    top: 0;
-    @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      left: -80%;
-      top: -50px;
+      top: ${props => (props.$index % 2 === 0 ? '-50px' : '50px')};
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 `;
+
 const ItemLine = styled.div`
   display: flex;
   width: 10px;
   height: 20px;
-  background-color: ${(props) => props.$props};
+  background-color: ${props => props.$props};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    width: 70px;
+    width: 30px;
     height: 10px;
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    width: 150px;
+    width: 70px;
   }
 `;
 export {

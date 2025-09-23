@@ -1,6 +1,6 @@
-import "modern-normalize";
-import { createGlobalStyle } from "styled-components";
-import { theme } from "./Variables.styled";
+import 'modern-normalize';
+import { createGlobalStyle } from 'styled-components';
+import { theme } from './Variables.styled';
 
 export const GlobalStyle = createGlobalStyle`
   body { 
@@ -54,7 +54,7 @@ img {
 
   display: inline-flex;
   gap: 8px;
-  margin-bottom:20px;
+  margin-bottom:-20px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     gap: 10px;
@@ -69,8 +69,8 @@ img {
   justify-content: center;
   align-items: center;
 
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 
   border-radius: 10px;
   border: 1px solid #999;
@@ -79,13 +79,13 @@ img {
   transition: all 0.25s ease-in;
 
    @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      width: 46px;
-      height: 46px;
+      width: 36px;
+      height: 36px;
   }
 
   &:hover, &:focus, &:active{
@@ -167,8 +167,8 @@ img {
   justify-content: center;
   content: "...";
 
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   padding: 7px;
 
   background-color: ${theme.colors.white};
@@ -181,14 +181,14 @@ img {
   -o-transition: 0.3s;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     padding: 10px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    width: 46px;
-    height: 46px;
+    width: 36px;
+    height: 36px;
     padding: 10px 20px;
   }
 }
@@ -218,10 +218,10 @@ img {
   align-items: center;
   justify-content: center;
 
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 400;
   color: #4E4E4E !important;
   
@@ -235,15 +235,15 @@ img {
   -o-transition: 0.3s;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 18px;
-    width: 36px;
-    height: 36px;
+    font-size: 12px;
+    width: 26px;
+    height: 26px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 24px;
-    width: 46px;
-    height: 46px;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
   }
 }
 

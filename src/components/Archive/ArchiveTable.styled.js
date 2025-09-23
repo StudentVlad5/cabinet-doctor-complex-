@@ -1,122 +1,8 @@
 import styled from 'styled-components';
 import { theme } from 'components/baseStyles/Variables.styled';
-import { NavLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
-const Table = styled.table`
-  width: 100%;
-  color: ${theme.colors.black};
-  table-layout: fixed;
-  border-collapse: collapse;
-  margin-bottom: 60px;
-
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    table-layout: auto;
-  }
-`;
-
-const TableFilter = styled.thead`
-  & th {
-    position: relative;
-    padding: 5px 20px 5px 5px;
-    background: ${theme.colors.darkGrey};
-  }
-
-  & input {
-    display: none;
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    right: 0;
-
-    width: 90%;
-    margin: 0 auto;
-    padding: 5px;
-
-    text-align: start;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: ${theme.colors.black};
-
-    background: ${theme.colors.white};
-    border: 0.5 solid ${theme.colors.darkGrey};
-    border-radius: 2px;
-
-    @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      font-size: 12px;
-    }
-
-    @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      font-size: 14px;
-    }
-
-    &:hover,
-    &:focus,
-    &:focus-visible {
-      border-width: 0.5px;
-      border-style: inset;
-      border-color: ${theme.colors.black};
-    }
-
-    &.active {
-      display: inline-block;
-    }
-  }
-`;
-
-const TableRow = styled.tr``;
-
-const TableHead = styled.th`
-  max-width: 179px;
-  padding: 0;
-
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-align: center;
-  color: ${theme.colors.black};
-
-  background-color: ${theme.colors.white};
-  border: 0.5px solid ${theme.colors.black};
-
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
-  }
-`;
-
-const TableData = styled.td`
-  padding: 5px;
-  min-width: 113px;
-  max-width: 182px;
-
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-align: center;
-  color: ${theme.colors.black};
-
-  background-color: ${theme.colors.white};
-  border: 0.5px solid ${theme.colors.black};
-
-  overflow-x: hidden;
-
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
-  }
-`;
-
-const BtnWrapper = styled.div`
+export const BtnWrapper = styled.div`
   display: inline-flex;
   align-items: stretch;
   gap: 23px;
@@ -130,37 +16,7 @@ const BtnWrapper = styled.div`
   }
 `;
 
-const BtnFilter = styled.button`
-  position: absolute;
-  right: 1px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  padding: 0;
-
-  color: ${theme.colors.black};
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-
-  &.active {
-    color: ${theme.colors.darkGreen};
-  }
-
-  & svg {
-    width: 10px;
-    height: 10px;
-    fill: currentColor;
-    /* stroke: currentColor; */
-
-    @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      width: 18px;
-      height: 18px;
-    }
-  }
-`;
-
-const Btn = styled.button`
+export const Btn = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
@@ -225,41 +81,92 @@ const Btn = styled.button`
   }
 `;
 
-const ClearFiltersBtn = styled(Btn)`
+export const ClearFiltersBtn = styled(Btn)`
   background-color: ${theme.colors.btnBlue};
 `;
 
-const DownloadExcel = styled(Btn)`
+export const DownloadExcel = styled(Btn)`
   background-color: ${theme.colors.lightGreen};
 `;
 
-const Link = styled(NavLink)`
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: ${theme.colors.textBlue};
-  text-decoration: none;
-  cursor: pointer;
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+`;
 
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
+export const TableFilter = styled.thead`
+  background-color: #f7f9fc;
+`;
+
+export const TableRow = styled.tr`
+  border-bottom: 1px solid #e0e0e0;
+  background-color: ${props => props.$bgcolor};
+`;
+
+export const TableHead = styled.th`
+  position: relative;
+  padding: 10px 20px 30px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  vertical-align: top;
+
+  span {
+    display: inline-block;
+    margin-bottom: 4px;
   }
 
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
+  input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 6px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+
+    &:focus {
+      border-color: #4a90e2;
+      outline: none;
+      box-shadow: 0 0 4px rgba(74, 144, 226, 0.4);
+    }
   }
 `;
 
-export {
-  Table,
-  TableFilter,
-  TableRow,
-  TableHead,
-  TableData,
-  BtnWrapper,
-  BtnFilter,
-  ClearFiltersBtn,
-  DownloadExcel,
-  Link,
-};
+export const BtnFilter = styled.button`
+  color: ${props => props.$color};
+  border: none;
+  cursor: pointer;
+  margin-left: 6px;
+  padding: 4px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &:hover {
+    color: #4a90e2;
+  }
+`;
+
+export const TableData = styled.td`
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #444;
+`;
+
+export const Link = styled(RouterLink)`
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;

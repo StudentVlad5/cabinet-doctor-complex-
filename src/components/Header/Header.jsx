@@ -15,7 +15,7 @@ export const Header = () => {
           <HeadLogo src={logo} aria-label="Logo" loading="lazy" />
         </Link>
         <Headline>
-          Institute of Human Safety
+          Институт безопасности человека
           <br />
           Кабинет Врача
         </Headline>
