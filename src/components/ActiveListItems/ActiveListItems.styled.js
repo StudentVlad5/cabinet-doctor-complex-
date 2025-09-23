@@ -122,6 +122,7 @@ const ItemContainer = styled.li`
   width: 100%;
   padding: 19px;
   background-color: ${theme.colors.white};
+  border-radius: 12px;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;
   }

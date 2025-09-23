@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 `;
 
 export const Controls = styled.div`
@@ -40,6 +41,8 @@ export const ContainerFiltered = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
   gap: 20px;
   padding: 15px;
   background: ${theme.colors.lightGray || '#f8f9fa'};
@@ -51,6 +54,11 @@ export const TdCheckCorrectItem = styled.li`
   display: flex;
   align-items: center;
   padding: 8px 12px;
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 `;
 
 export const CheckBoxItem = styled.input`
