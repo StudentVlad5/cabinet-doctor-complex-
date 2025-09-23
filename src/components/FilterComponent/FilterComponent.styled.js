@@ -19,21 +19,21 @@ export const ToggleButton = styled.button`
   padding: 10px 18px;
   border: none;
   border-radius: 12px;
-  background: ${theme.colors.primary || '#007bff'};
+  background: ${theme.colors.darkBlue || '#007bff'};
   color: white;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease;
   &:hover {
-    background: ${theme.colors.primaryDark || '#0056b3'};
+    background: ${theme.colors.headerBlue || '#0056b3'};
   }
 `;
 
 export const ActionButton = styled(ToggleButton)`
   background: ${theme.colors.gray || '#6c757d'};
   &:hover {
-    background: ${theme.colors.black || '#343a40'};
+    background: ${theme.colors.headerBlue || '#343a40'};
   }
 `;
 
