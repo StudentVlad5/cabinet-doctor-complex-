@@ -315,6 +315,20 @@ export const POINT_OF_CASES = {
       'stroke',
       'arterialPuncture',
     ],
+    level6: [
+      'smallOperations',
+      'cardiovascularDiseases',
+      'acuteInfectiousDisease',
+      'hemorrhages',
+      'onmk',
+      'convulsions',
+      'hemorrhagicStroke',
+      'SACStroke',
+      'ischemicStroke',
+      'transient_cerebrovascular_accident',
+      'unknown_accident',
+      'noteChecklistSMP',
+    ],
   },
   alergoCod: {
     level1: [

@@ -1,4 +1,4 @@
-import { POINT_OF_CASES } from 'helpers/constants';
+import { POINT_OF_CASES } from 'helpers/CONSTANTS/constants';
 
 export function getItemProps(level, pointOfRouter, item, theme) {
   const caseConfig = POINT_OF_CASES[pointOfRouter];

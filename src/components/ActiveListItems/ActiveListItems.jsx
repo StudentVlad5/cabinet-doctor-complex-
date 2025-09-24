@@ -31,7 +31,7 @@ import {
   LABEL_OF_CASES,
   newList,
   POINT_OF_CASES,
-} from 'helpers/constants';
+} from 'helpers/CONSTANTS/constants';
 import { getItemProps } from 'helpers/GetItemProps/GetItemProps';
 import { FilterComponent } from '../FilterComponent/FilterComponent';
 

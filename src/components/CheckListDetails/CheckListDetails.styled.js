@@ -1,9 +1,9 @@
-import { theme } from "components/baseStyles/Variables.styled";
-import styled from "styled-components";
-import { ReactComponent as copyIcon } from "images/svg/copy.svg";
-import { ReactComponent as wordIcon } from "images/svg/word.svg";
-import { ReactComponent as checkIcon } from "images/svg/vertical_line.svg";
-import { Link } from "react-router-dom";
+import { theme } from 'components/baseStyles/Variables.styled';
+import styled from 'styled-components';
+import { ReactComponent as copyIcon } from 'images/svg/copy.svg';
+import { ReactComponent as wordIcon } from 'images/svg/word.svg';
+import { ReactComponent as checkIcon } from 'images/svg/vertical_line.svg';
+import { Link } from 'react-router-dom';
 
 export const CheckListBox = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ export const CheckListBox = styled.div`
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     border-bottom: 3px solid ${theme.colors.black};
     bottom: 50px;
@@ -163,6 +163,7 @@ export const PatientBoxTitle = styled.h2`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin-top: 20px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 28px;
@@ -172,15 +173,20 @@ export const PatientBoxTitle = styled.h2`
 export const Table = styled.table`
   border-collapse: collapse;
   margin-top: 20px;
-
-  &:not(:last-child) {
+  width: 100%;
+  :not(:last-child) {
     margin-bottom: 100px;
   }
 `;
 
 export const Tr = styled.tr`
-  /* border: 1px solid ${theme.colors.black}; */
-  /* background-color: ${theme.colors.darkGrey}; */
+  width: 100%;
+  td:first-child {
+    width: calc(70%);
+  }
+  td:nth-child(2) {
+    width: 300px;
+  }
 `;
 
 export const Td = styled.td`
@@ -206,7 +212,7 @@ export const Td = styled.td`
 `;
 
 export const TdRed = styled(Td)`
-  background-color: ${(props) => props.$props};
+  background-color: ${props => props.$props};
 `;
 
 export const TdSmall = styled.td`
@@ -222,11 +228,12 @@ export const TdSmall = styled.td`
   }
 `;
 export const TdSmallRed = styled(TdSmall)`
-  background-color: ${(props) => props.$props};
+  background-color: ${props => props.$props};
 `;
 
 export const TdCheckCorrectItem = styled.td`
   display: flex;
+  width: 80px;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -285,8 +292,10 @@ export const AdditionalInfoDataBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
   margin-top: 60px;
   position: relative;
+  width: 100%;
 
   @media screen and (min-width: 1022px) {
     flex-direction: row;
@@ -296,36 +305,26 @@ export const AdditionalInfoDataBox = styled.div`
 export const AdditionalInfoDataLableBox = styled.div`
   display: flex;
   flex-direction: column;
+
   align-items: center;
   gap: 8px;
-  @media screen and (min-width: 1022px) {
+  @media screen and (min-width: 1422px) {
     position: absolute;
     right: 0;
     flex-direction: row;
   }
 `;
 
-export const AdditionalInfoDataLableBox2 = styled(AdditionalInfoDataLableBox)`
-  /* background-color: white;
-  border-radius: 5px;
-  font-size: 20px; */
-`;
+export const AdditionalInfoDataLableBox2 = styled(AdditionalInfoDataLableBox)``;
 
 export const AdditionalInfoDataLable = styled.label`
   margin-bottom: 20px;
   @media screen and (min-width: 1022px) {
-    /* position: absolute; */
-    /* right: 300px; */
     margin-bottom: 0;
   }
 `;
 
-export const AdditionalInfoDataLable2 = styled.label`
-  /* @media screen and (min-width: 1022px) {
-    position: absolute;
-    right: 0;
-  } */
-`;
+export const AdditionalInfoDataLable2 = styled.label``;
 
 export const AdditionalInfoDataInput = styled(AdditionalInfoFormInput)`
   width: 170px;
@@ -405,7 +404,7 @@ export const StylesCheckBoxItem = styled.div`
   align-items: center;
   width: 52px;
   height: 52px;
-  border: ${(props) => props.$props} solid ${theme.colors.black};
+  border: ${props => props.$props} solid ${theme.colors.black};
   border-radius: 11px;
   background-color: ${theme.colors.white};
   cursor: pointer;
@@ -414,10 +413,10 @@ export const CheckIcon = styled(checkIcon)`
   /* fill: red; */
   width: 36px;
   height: 36px;
-  opacity: ${(props) => props.$props};
-  fill: ${(props) => props.$fill};
+  opacity: ${props => props.$props};
+  fill: ${props => props.$fill};
   user-select: none;
-  stroke: ${(props) => props.$fill};
+  stroke: ${props => props.$fill};
 `;
 
 export const DecisionBox = styled.div`
@@ -444,7 +443,7 @@ export const DecisionBoxInput = styled.input`
   cursor: pointer;
   border-color: #7a7a7a;
 
-  &[type="checkbox"]:checked {
+  &[type='checkbox']:checked {
     accent-color: #009b2b;
   }
 `;
@@ -509,12 +508,3 @@ export const DivForLabelDateTime = styled.div`
   position: relative;
   margin-left: 20px;
 `;
-
-// export const DecisionBox = styled.div``;
-// export const DecisionBox = styled.div``;
-// export const DecisionBox = styled.div``;
-// export const DecisionBox = styled.div``;
-// export const DecisionBox = styled.div``;
-// export const DecisionBox = styled.div``;
-// export const DecisionBox = styled.div``;
-// export const DecisionBox = styled.div``;

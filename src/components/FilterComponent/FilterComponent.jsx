@@ -9,7 +9,7 @@ import {
   TdCheckCorrectItem,
   StylesCheckBoxItem,
 } from './FilterComponent.styled';
-import { filterKeys } from 'helpers/constants';
+import { filterKeys } from 'helpers/CONSTANTS/constants';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export const FilterComponent = ({ filtered, setFiltered }) => {
