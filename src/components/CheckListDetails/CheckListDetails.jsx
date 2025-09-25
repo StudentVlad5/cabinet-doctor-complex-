@@ -42,7 +42,7 @@ export const CheckListDetails = () => {
   const [formData, setFormData] = useState({});
   const [data, setData] = useState({});
   const [caseType, setCaseType] = useState('');
-  console.log(formData);
+
   useEffect(() => {
     (async () => {
       setIsLoading(true);
