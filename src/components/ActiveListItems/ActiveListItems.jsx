@@ -29,7 +29,6 @@ import sound from '../../mp3/spokoynyiy-zvuk-poyavleniya-v-sisteme.mp3';
 import {
   filterKeys,
   LABEL_OF_CASES,
-  newList,
   POINT_OF_CASES,
 } from 'helpers/CONSTANTS/constants';
 import { getItemProps } from 'helpers/GetItemProps/GetItemProps';
@@ -37,8 +36,7 @@ import { FilterComponent } from '../FilterComponent/FilterComponent';
 
 export const ActiveListItems = () => {
   const [checklists, setChecklists] = useState([]);
-  // const [uniqueChecklists, setUniqueChecklists] = useState([]);
-  const [uniqueChecklists, setUniqueChecklists] = useState([...newList]);
+  const [uniqueChecklists, setUniqueChecklists] = useState([]);
   const [arrayOfIdentifier, setArrayOfIdentifier] = useState([]);
   const [count, setCount] = useState(true);
   const [playStatus, setPlayStatus] = useState(false);
@@ -59,48 +57,57 @@ export const ActiveListItems = () => {
     setFilteredList([...newFilteredList]);
   }, [filtered, uniqueChecklists]);
 
-  // useEffect(() => {
-  //   const getData = async() => {
-  //     setIsLoading(true);
-  //     try {
-  //       const { data } = await fetchData('read?identifier=new');
-  //       if (!data) {
-  //         return onFetchError('Whoops, something went wrong');
-  //       }
-  //       setChecklists(data.normal);
-  //       const uniqueIdentifier = [];
-  //       const uniqueChecklists = [];
-  //       data.normal.forEach(element => {
-  //         const isDuplicate = uniqueIdentifier.includes(element.identifier);
-  //         if (!isDuplicate) {
-  //           uniqueIdentifier.push(element.identifier);
-  //         }
-  //       });
-  //       uniqueIdentifier.sort(function (a, b) {return b - a});
-  //       uniqueIdentifier.map(it=> uniqueChecklists.push(data.normal.find(element=> element.identifier === it)));
-  //       setUniqueChecklists(uniqueChecklists);
-  //       if(count){
-  //         setArrayOfIdentifier(uniqueIdentifier);
-  //         setCount(false);
-  //       }
-  //       if(!count){for(let it of uniqueIdentifier){
-  //           if(arrayOfIdentifier.includes(it) === false)
-  //           {
-  //             setPlayStatus(true);
-  //             setCount(true);
-  //         }}};
-  //     } catch (error) {
-  //       setError(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   getData();
-  //   timer.current = setInterval(()=>getData(), 60000);
-  //   return () => {clearInterval(timer.current);
-  //     timer.current = null;
-  //   };
-  // }, [arrayOfIdentifier, count]);
+  useEffect(() => {
+    const getData = async () => {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData('read?identifier=new');
+        if (!data) {
+          return onFetchError('Whoops, something went wrong');
+        }
+        setChecklists(data.normal);
+        const uniqueIdentifier = [];
+        const uniqueChecklists = [];
+        data.normal.forEach(element => {
+          const isDuplicate = uniqueIdentifier.includes(element.identifier);
+          if (!isDuplicate) {
+            uniqueIdentifier.push(element.identifier);
+          }
+        });
+        uniqueIdentifier.sort(function (a, b) {
+          return b - a;
+        });
+        uniqueIdentifier.map(it =>
+          uniqueChecklists.push(
+            data.normal.find(element => element.identifier === it)
+          )
+        );
+        setUniqueChecklists(uniqueChecklists);
+        if (count) {
+          setArrayOfIdentifier(uniqueIdentifier);
+          setCount(false);
+        }
+        if (!count) {
+          for (let it of uniqueIdentifier) {
+            if (arrayOfIdentifier.includes(it) === false) {
+              setPlayStatus(true);
+              setCount(true);
+            }
+          }
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getData();
+    timer.current = setInterval(() => getData(), 60000);
+    return () => {
+      clearInterval(timer.current);
+      timer.current = null;
+    };
+  }, [arrayOfIdentifier, count]);
 
   useEffect(() => {
     const playSound = () => {

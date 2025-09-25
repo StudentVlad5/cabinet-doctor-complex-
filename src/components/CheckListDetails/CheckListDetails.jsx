@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fetchData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
@@ -25,7 +25,7 @@ import { export2Docx } from 'services/exportToWord';
 
 import 'dayjs/locale/de';
 
-import { handleCopy } from 'helpers/CopyToWord/CopyToWord';
+import { handleCopy } from 'helpers/ClipboardCopy/clipboardCopy';
 
 import { renderRow } from './RenderRow';
 import { SCHEMAS } from 'helpers/CONSTANTS/SCHEMAS';
@@ -41,7 +41,8 @@ export const CheckListDetails = () => {
 
   const [formData, setFormData] = useState({});
   const [data, setData] = useState({});
-
+  const [caseType, setCaseType] = useState('');
+  console.log(formData);
   useEffect(() => {
     (async () => {
       setIsLoading(true);
@@ -51,6 +52,7 @@ export const CheckListDetails = () => {
 
         setFormData({ ...data.normal });
         setData({ ...data.normal });
+        setCaseType(data.normal.pointOfRouter || 'stroke');
       } catch (err) {
         setError(err);
       } finally {
@@ -79,8 +81,10 @@ export const CheckListDetails = () => {
       setIsLoading(false);
     }
   };
-  const caseType = 'stroke';
-  const schema = SCHEMAS[caseType] || [];
+
+  let schema = useMemo(() => {
+    return SCHEMAS[caseType] || [];
+  }, [caseType]);
 
   return (
     <Container>
@@ -114,7 +118,14 @@ export const CheckListDetails = () => {
           </div>
 
           <CheckListBtnBox>
-            <CheckListBtn type="button" onClick={handleCopy}>
+            <CheckListBtn
+              type="button"
+              onClick={() => {
+                handleCopy(formData, schema);
+                setIsCopied(true);
+                setTimeout(() => setIsCopied(false), 2000);
+              }}
+            >
               <CopyIcon />
               {isCopied ? 'Скопировано!' : 'Скопировать данные'}
             </CheckListBtn>
