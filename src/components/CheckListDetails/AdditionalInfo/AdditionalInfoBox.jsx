@@ -61,100 +61,101 @@ export const AdditionalInfoFormSection = ({
         </AdditionalInfoFormLable>
 
         {/* Дата и время */}
-        {[
-          {
-            label: 'прибытия пациента',
-            time: 'patientArrivalTime',
-            date: 'patientArrivalDate',
-            defect: 'patientArrival_defect',
-          },
-          {
-            label: 'КТ',
-            time: 'timeDateCt',
-            date: null,
-            defect: 'timeDateCt_defect',
-          },
-          {
-            label: 'ТЛТ',
-            time: 'tltTimeDate',
-            date: null,
-            defect: 'tltTimeDate_defect',
-          },
-          {
-            label: 'госпитализации',
-            time: 'inputDataHospitalizationTimeDate',
-            date: null,
-            defect: 'inputDataHospitalizationTimeDate_defect',
-          },
-          {
-            label: 'ЦАГ и тромбэктомии',
-            time: 'cagTimeDate',
-            date: null,
-            defect: 'cagTimeDate_defect',
-          },
-        ].map(({ label, time, date, defect }) => (
-          <AdditionalInfoDataBox key={time}>
-            <AdditionalInfoFormText>
-              Дата и время проведения {label}
-            </AdditionalInfoFormText>
-            <AdditionalInfoDataLableBox>
-              {date && (
-                <>
-                  <AdditionalInfoDataLable>
-                    <AdditionalInfoDataInput
-                      type="time"
-                      value={formState[time]}
-                      onChange={e => updateField(time, e.target.value)}
-                    />
-                  </AdditionalInfoDataLable>
-                  <AdditionalInfoDataLable2>
-                    <AdditionalInfoDataInput2
-                      type="date"
-                      value={formState[date]}
-                      onChange={e => updateField(date, e.target.value)}
-                    />
-                  </AdditionalInfoDataLable2>
-                </>
-              )}
-              {!date && (
-                <LocalizationProvider
-                  dateAdapter={AdapterDayjs}
-                  adapterLocale="de"
-                >
-                  <DateTimePicker
-                    className={classes.dateTimePicker}
-                    label="Введите время и дату"
-                    ampm={false}
-                    format="DD.MM.YYYY HH:mm"
-                    onChange={newValue => updateField(time, newValue)}
-                    value={dayjs(formState[time])}
-                  />
-                </LocalizationProvider>
-              )}
-
-              <DivForLabelDateTime>
-                <label style={{ position: 'absolute' }}>
-                  <CheckBoxItem
-                    type="checkbox"
-                    id={`${defect}`}
-                    name={`${defect}`}
-                    value={formState[defect]}
-                    onChange={() => updateField(defect, !formState[defect])}
-                    checked={formState[defect]}
-                  />
-                  <StylesCheckBoxItem
-                    $props={formState[defect] ? '4px' : '1px'}
+        {formState?.pointOfRouter === 'stroke' &&
+          [
+            {
+              label: 'прибытия пациента',
+              time: 'patientArrivalTime',
+              date: 'patientArrivalDate',
+              defect: 'patientArrival_defect',
+            },
+            {
+              label: 'КТ',
+              time: 'timeDateCt',
+              date: null,
+              defect: 'timeDateCt_defect',
+            },
+            {
+              label: 'ТЛТ',
+              time: 'tltTimeDate',
+              date: null,
+              defect: 'tltTimeDate_defect',
+            },
+            {
+              label: 'госпитализации',
+              time: 'inputDataHospitalizationTimeDate',
+              date: null,
+              defect: 'inputDataHospitalizationTimeDate_defect',
+            },
+            {
+              label: 'ЦАГ и тромбэктомии',
+              time: 'cagTimeDate',
+              date: null,
+              defect: 'cagTimeDate_defect',
+            },
+          ].map(({ label, time, date, defect }) => (
+            <AdditionalInfoDataBox key={time}>
+              <AdditionalInfoFormText>
+                Дата и время проведения {label}
+              </AdditionalInfoFormText>
+              <AdditionalInfoDataLableBox>
+                {date && (
+                  <>
+                    <AdditionalInfoDataLable>
+                      <AdditionalInfoDataInput
+                        type="time"
+                        value={formState[time]}
+                        onChange={e => updateField(time, e.target.value)}
+                      />
+                    </AdditionalInfoDataLable>
+                    <AdditionalInfoDataLable2>
+                      <AdditionalInfoDataInput2
+                        type="date"
+                        value={formState[date]}
+                        onChange={e => updateField(date, e.target.value)}
+                      />
+                    </AdditionalInfoDataLable2>
+                  </>
+                )}
+                {!date && (
+                  <LocalizationProvider
+                    dateAdapter={AdapterDayjs}
+                    adapterLocale="de"
                   >
-                    <CheckIcon
-                      $props={formState[defect] ? '1' : '0.5'}
-                      $fill={formState[defect] ? '#ED2939' : 'grey'}
+                    <DateTimePicker
+                      className={classes.dateTimePicker}
+                      label="Введите время и дату"
+                      ampm={false}
+                      format="DD.MM.YYYY HH:mm"
+                      onChange={newValue => updateField(time, newValue)}
+                      value={dayjs(formState[time])}
                     />
-                  </StylesCheckBoxItem>
-                </label>
-              </DivForLabelDateTime>
-            </AdditionalInfoDataLableBox>
-          </AdditionalInfoDataBox>
-        ))}
+                  </LocalizationProvider>
+                )}
+
+                <DivForLabelDateTime>
+                  <label style={{ position: 'absolute' }}>
+                    <CheckBoxItem
+                      type="checkbox"
+                      id={`${defect}`}
+                      name={`${defect}`}
+                      value={formState[defect]}
+                      onChange={() => updateField(defect, !formState[defect])}
+                      checked={formState[defect]}
+                    />
+                    <StylesCheckBoxItem
+                      $props={formState[defect] ? '4px' : '1px'}
+                    >
+                      <CheckIcon
+                        $props={formState[defect] ? '1' : '0.5'}
+                        $fill={formState[defect] ? '#ED2939' : 'grey'}
+                      />
+                    </StylesCheckBoxItem>
+                  </label>
+                </DivForLabelDateTime>
+              </AdditionalInfoDataLableBox>
+            </AdditionalInfoDataBox>
+          ))}
 
         {/* Заключительное решение */}
         <DecisionBox>

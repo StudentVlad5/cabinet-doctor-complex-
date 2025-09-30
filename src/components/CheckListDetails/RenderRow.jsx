@@ -39,7 +39,7 @@ export const renderRow = (
   if (type === 'text' || type === 'number') {
     const value = data?.[field];
     displayValue =
-      value === 'true'
+      value === 'true' || value === 'да'
         ? 'Да'
         : value === 'false'
         ? 'Нет'

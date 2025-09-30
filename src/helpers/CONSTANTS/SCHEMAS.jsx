@@ -9,10 +9,6 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },
@@ -198,16 +194,14 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },
     {
       group: 'Информация о вызове',
       fields: [
+        'nameOfParamedic',
+        'numberOfBrigade',
         {
           field: 'startOfSimptoms',
           label: 'Время начала симптомов',
@@ -503,10 +497,6 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },
@@ -603,10 +593,6 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },
@@ -671,7 +657,7 @@ export const SCHEMAS = {
           field: 'localizationOfPlaces',
           label: 'Локализация мест ожога',
         },
-        { field: 'selectedZones', label: 'Площадь поражения' },
+        { field: 'selectedZonesCyrillic', label: 'Площадь поражения' },
       ],
     },
     {
@@ -711,10 +697,6 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },
@@ -771,7 +753,7 @@ export const SCHEMAS = {
       group: 'Профилактика судорог',
       fields: [
         {
-          field: 'startingDosed',
+          field: 'startingDose',
           label:
             'Стартовая доза: 5 г сухого вещества (20 мл 25% р-ра) в/в медленно в течении 10-20 минут',
         },
@@ -815,10 +797,6 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },
@@ -910,10 +888,6 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },
@@ -1020,47 +994,6 @@ export const SCHEMAS = {
       ],
     },
     {
-      group: 'Догоспитальное лечение (по протоколу ОКС)',
-      fields: [
-        {
-          field: 'isASK',
-          label: 'АСК 300 мг разжевать',
-        },
-        {
-          field: 'isClopidogrel',
-          label: 'Тривентин 180 мг',
-        },
-        {
-          field: 'isHeparin',
-          label: 'Гепарин 5000 / Эноксапарин',
-        },
-        {
-          field: 'isNitroglycerin',
-          label: 'Изокет спрей (АД не ниже 90/60мм рт ст)',
-        },
-        {
-          field: 'isMorphine',
-          label: 'Морфин при болевом синдроме',
-        },
-        {
-          field: 'isTLT',
-          label: 'ТЛТ',
-        },
-        {
-          field: 'startTLTDate',
-          label: 'ТЛТ - дата начала',
-        },
-        {
-          field: 'finishTLTDate',
-          label: 'ТЛТ - дата окончания',
-        },
-        {
-          field: 'prehospitalTreatmentOther',
-          label: 'Дополнительный комментарийГ',
-        },
-      ],
-    },
-    {
       group: 'ЭКГ (до 10 минут от контакта!)',
       fields: [
         {
@@ -1086,6 +1019,47 @@ export const SCHEMAS = {
         {
           field: 'ecgOther',
           label: 'Дополнительный комментарий по ЭКГ',
+        },
+      ],
+    },
+    {
+      group: 'Догоспитальное лечение (по протоколу ОКС)',
+      fields: [
+        {
+          field: 'isNitroglycerin',
+          label: 'Изокет спрей (АД не ниже 90/60мм рт ст)',
+        },
+        {
+          field: 'isMorphine',
+          label: 'Морфин при болевом синдроме',
+        },
+        {
+          field: 'isASK',
+          label: 'АСК 300 мг разжевать',
+        },
+        {
+          field: 'isClopidogrel',
+          label: 'Тривентин 180 мг',
+        },
+        {
+          field: 'isHeparin',
+          label: 'Гепарин 5000 / Эноксапарин',
+        },
+        {
+          field: 'isTLT',
+          label: 'ТЛТ',
+        },
+        {
+          field: 'startTLTDate',
+          label: 'ТЛТ - дата начала',
+        },
+        {
+          field: 'finishTLTDate',
+          label: 'ТЛТ - дата окончания',
+        },
+        {
+          field: 'prehospitalTreatmentOther',
+          label: 'Дополнительный комментарий',
         },
       ],
     },
@@ -1148,7 +1122,7 @@ export const SCHEMAS = {
         },
         {
           field: 'physicalExaminationOtherOfHospitaTransfer',
-          label: 'Признаки СН хрипы',
+          label: 'Другое',
         },
       ],
     },
@@ -1161,10 +1135,6 @@ export const SCHEMAS = {
         { field: 'patientINN', label: 'ИИН пациента' },
         { field: 'patientSex', label: 'Пол пациента' },
         { field: 'birthdayDate', label: 'Дата рождения' },
-        {
-          field: 'visualDescription',
-          label: 'Визуальное описание - при отсутствии личных данных',
-        },
         { field: 'comments', label: 'Дополнительный комментарий' },
       ],
     },

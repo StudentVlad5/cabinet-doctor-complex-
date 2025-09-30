@@ -47,7 +47,7 @@ export const ActiveListItems = () => {
   // make filter for list
   const [filteredList, setFilteredList] = useState([]);
   const [filtered, setFiltered] = useState(filterKeys.map(it => it.id));
-
+  console.log(filteredList);
   // navigator.mediaDevices.getUserMedia({ audio: true });
 
   useEffect(() => {

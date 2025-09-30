@@ -86,6 +86,8 @@ export const CheckListDetails = () => {
     return SCHEMAS[caseType] || [];
   }, [caseType]);
 
+  console.log(formData);
+
   return (
     <Container>
       {isLoading ? onLoading() : onLoaded()}
