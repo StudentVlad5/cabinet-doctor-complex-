@@ -235,7 +235,8 @@ export const ActiveListItems = () => {
                               <ItemCircle
                                 {...itemCircleProps}
                                 $label={
-                                  LABEL_OF_CASES[item?.pointOfRouter][idx] || ''
+                                  LABEL_OF_CASES[item?.pointOfRouter]?.[idx] ||
+                                  ''
                                 }
                                 $index={idx}
                               />
